@@ -1,0 +1,15 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" rx="20" fill="#F0EDE8"/>
+
+  <!-- Outer pulse ring -->
+  <circle cx="100" cy="100" r="60" fill="none" stroke="#E2DED8" stroke-width="1.5"/>
+  <!-- Middle dashed ring -->
+  <circle cx="100" cy="100" r="42" fill="none" stroke="#D0CBFF" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+  <!-- Lightning bolt — top-right down to midpoint jog, then down-right to bottom -->
+  <!-- Points: top, mid-right-top, mid-left, bottom, mid-left-bottom, mid-right-bottom  -->
+  <polygon
+    points="112,36  88,96  104,96  88,164  120,104  104,104"
+    fill="#6B5CE7"
+  />
+</svg>

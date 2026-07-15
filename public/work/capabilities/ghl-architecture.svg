@@ -1,0 +1,24 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" rx="20" fill="#F0EDE8"/>
+
+  <!-- Outer ring -->
+  <circle cx="100" cy="100" r="62" fill="none" stroke="#E2DED8" stroke-width="2"/>
+  <!-- Middle dashed ring -->
+  <circle cx="100" cy="100" r="42" fill="none" stroke="#D0CBFF" stroke-width="2" stroke-dasharray="6 4"/>
+  <!-- Inner filled circle -->
+  <circle cx="100" cy="100" r="22" fill="#6B5CE7"/>
+  <!-- Bullseye dot -->
+  <circle cx="100" cy="100" r="7" fill="#ffffff"/>
+
+  <!-- 4 node dots on outer ring at cardinal points -->
+  <circle cx="100" cy="38" r="5" fill="#6B5CE7"/>
+  <circle cx="162" cy="100" r="5" fill="#6B5CE7"/>
+  <circle cx="100" cy="162" r="5" fill="#6B5CE7"/>
+  <circle cx="38"  cy="100" r="5" fill="#6B5CE7"/>
+
+  <!-- Connector lines from inner edge to outer nodes -->
+  <line x1="100" y1="78"  x2="100" y2="43"  stroke="#6B5CE7" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="122" y1="100" x2="157" y2="100" stroke="#6B5CE7" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="100" y1="122" x2="100" y2="157" stroke="#6B5CE7" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="78"  y1="100" x2="43"  y2="100" stroke="#6B5CE7" stroke-width="1.5" stroke-opacity="0.4"/>
+</svg>

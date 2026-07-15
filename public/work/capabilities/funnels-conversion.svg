@@ -1,0 +1,18 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" rx="20" fill="#F0EDE8"/>
+
+  <!-- Funnel layer 1 (widest, lightest purple) -->
+  <rect x="32" y="38" width="136" height="30" rx="8" fill="#D0CBFF"/>
+  <!-- Funnel layer 2 -->
+  <rect x="52" y="76" width="96" height="26" rx="7" fill="#A89FEE"/>
+  <!-- Funnel layer 3 -->
+  <rect x="72" y="110" width="56" height="24" rx="6" fill="#6B5CE7"/>
+  <!-- Narrow exit stem -->
+  <rect x="90" y="142" width="20" height="18" rx="4" fill="#6B5CE7"/>
+
+  <!-- Downward arrow below stem -->
+  <polyline points="92,162 100,172 108,162" fill="none" stroke="#6B5CE7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Small decorative check on layer 1 -->
+  <polyline points="60,54 67,61 82,46" fill="none" stroke="#6B5CE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
+</svg>
