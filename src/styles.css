@@ -29,3 +29,5 @@ html,body{max-width:100%;overflow-x:clip}.nav-wrap{padding-left:env(safe-area-in
 @media(max-width:900px){.network-bg svg{width:150%;left:-25%;opacity:.56}.hero-network .hero-grid{gap:45px}}
 @media(max-width:430px){.network-bg svg{width:220%;left:-65%;opacity:.44}.network-lines path{stroke-width:1}.network-travelers circle:nth-child(n+2){display:none}.hero-network .clean-portrait{box-shadow:0 22px 60px rgba(0,0,0,.45),0 0 35px rgba(125,92,255,.16)}}
 @media(prefers-reduced-motion:reduce){.network-lines path,.network-nodes circle{animation:none}.network-travelers{display:none}}
+/* Alternating rhythm: dark hero, white proof/logos, dark systems */
+.logo-ticker{background:#fff;color:var(--ink);border-bottom:1px solid var(--line)}.logo-ticker .container>span{color:var(--muted);font-weight:700}.logo-ticker .marquee{mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}.logo-ticker .moving-logo{background:#f7f6f1;border-color:var(--line);box-shadow:0 8px 22px rgba(17,18,26,.045)}.logo-ticker .moving-logo img{filter:none;opacity:.92}.proof{background:#fff}
