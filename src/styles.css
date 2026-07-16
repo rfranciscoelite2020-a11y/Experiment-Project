@@ -130,3 +130,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .reveal-enabled .website-card.scroll-reveal.is-visible,.reveal-enabled .service.scroll-reveal.is-visible,.reveal-enabled .profile-grid>a.scroll-reveal.is-visible{transform:none}
 @media(max-width:900px){main[id],main section[id]{scroll-margin-top:68px}.mobile-contact-fab{position:fixed;z-index:18;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:8px;min-height:48px;padding:0 17px;border-radius:999px;background:var(--lime);color:var(--ink);font-size:12px;font-weight:800;box-shadow:0 14px 35px rgba(17,18,26,.28),0 0 24px rgba(202,255,90,.2)}.profiles,.cta,footer{position:relative;z-index:19}.nav-links.open a{min-height:48px;padding:10px 6px}.footer-grid>nav a{min-height:44px}.project-toggle-wrap{margin-top:32px}}
 @media(max-width:560px){.reveal-enabled .scroll-reveal{transition-delay:0ms!important;transition-duration:.68s}.project-toggle{width:100%}.person small{max-width:265px;line-height:1.45}.form-note{font-size:9px}.mobile-contact-fab{right:12px;bottom:calc(12px + env(safe-area-inset-bottom))}}
+
+/* Phone hero order: headline, portrait, supporting copy, then actions */
+@media(max-width:560px){
+ .hero-network .hero-grid{display:flex;flex-direction:column;align-items:stretch;gap:0}
+ .hero-network .hero-copy{display:contents;animation:none}
+ .hero-network .hero-copy>.eyebrow{order:1;align-self:flex-start}
+ .hero-network .hero-copy>h1{order:2}
+ .hero-network .cutout-portrait{order:3;margin:6px auto 22px}
+ .hero-network .hero-copy>p{order:4;margin:0}
+ .hero-network .hero-actions{order:5}
+ .hero-network .hero-checks{order:6}
+}
