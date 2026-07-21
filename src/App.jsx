@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Check, ChevronDown, ExternalLink, Menu, X } from 'lucide-react';
 
 const services=[
@@ -33,7 +33,46 @@ function PortfolioMark({name}){switch(name){
  case'orbit-gs':return <div className="mark-stack"><strong className="mark-name large">Orbit<span className="muted-accent">GS</span></strong><small className="mark-sub">Growth Studio</small></div>;
  default:return <strong className="ray-mark">ray</strong>}}
 
-function NetworkBackdrop(){return <div className="network-bg" aria-hidden="true"><svg viewBox="0 0 1440 820" preserveAspectRatio="xMidYMid slice"><g className="network-lines"><path d="M-20 140L180 58l166 120 168-132 166 130 145-92 214 146 160-122 261 96"/><path d="M68 442l188-136 176 78 156-208 178 156 156-126 166 196 152-120 220 112"/><path d="M-40 690l188-108 138 94 196-168 168 124 174-206 186 158 170-90 300 142"/><path d="M180 58l76 248 90-128 86 206 82-338 74 338 92-208 86 156 59-248 97 122 117 24 49 172 111-294 41 176"/><path d="M68 442l80 140 108-276 30 370 146-292 50 124 106-332 62 456 116-300 58 94 98-220 88 378 98-182 92 92 49-212 111 354"/></g><g className="network-nodes">{[[180,58],[346,178],[514,46],[680,176],[825,84],[1039,230],[1199,108],[68,442],[256,306],[432,384],[588,176],[766,332],[922,206],[1088,402],[1240,282],[148,582],[286,676],[482,508],[650,632],[824,426],[1010,584],[1180,494],[1291,636]].map(([cx,cy],i)=><circle key={i} cx={cx} cy={cy} r={i%5===0?5:3} style={{'--delay':`${(i%9)*-.45}s`}}/>)}</g><g className="network-travelers"><circle r="4"><animateMotion dur="7s" repeatCount="indefinite" path="M68 442L256 306L432 384L588 176L766 332L922 206"/></circle><circle r="3"><animateMotion dur="9s" begin="-3s" repeatCount="indefinite" path="M148 582L286 676L482 508L650 632L824 426L1010 584L1180 494"/></circle><circle r="3"><animateMotion dur="8s" begin="-5s" repeatCount="indefinite" path="M180 58L346 178L514 46L680 176L825 84L1039 230L1199 108"/></circle></g></svg><div className="network-glow ng-one"/><div className="network-glow ng-two"/></div>}
+function NetworkBackdrop(){
+ const backdropRef=useRef(null);
+ useEffect(()=>{
+  const backdrop=backdropRef.current,hero=backdrop?.parentElement;
+  if(!backdrop||!hero||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  let frame=0;
+  const updatePointer=event=>{
+   if(event.pointerType==='touch')return;
+   const bounds=hero.getBoundingClientRect(),x=Math.max(0,Math.min(1,(event.clientX-bounds.left)/bounds.width)),y=Math.max(0,Math.min(1,(event.clientY-bounds.top)/bounds.height));
+   window.cancelAnimationFrame(frame);
+   frame=window.requestAnimationFrame(()=>{
+    backdrop.style.setProperty('--cursor-x',`${(x*100).toFixed(2)}%`);
+    backdrop.style.setProperty('--cursor-y',`${(y*100).toFixed(2)}%`);
+    backdrop.style.setProperty('--parallax-x',(x-.5).toFixed(3));
+    backdrop.style.setProperty('--parallax-y',(y-.5).toFixed(3));
+    backdrop.classList.add('is-interactive');
+   });
+  };
+  const resetPointer=()=>{
+   window.cancelAnimationFrame(frame);
+   backdrop.classList.remove('is-interactive');
+   backdrop.style.setProperty('--parallax-x','0');
+   backdrop.style.setProperty('--parallax-y','0');
+  };
+  hero.addEventListener('pointermove',updatePointer,{passive:true});
+  hero.addEventListener('pointerleave',resetPointer);
+  return()=>{window.cancelAnimationFrame(frame);hero.removeEventListener('pointermove',updatePointer);hero.removeEventListener('pointerleave',resetPointer)};
+ },[]);
+ return <div className="network-bg" ref={backdropRef} aria-hidden="true">
+  <div className="network-depth-grid"/>
+  <svg viewBox="0 0 1440 820" preserveAspectRatio="xMidYMid slice">
+   <g className="network-lines"><path d="M-20 140L180 58l166 120 168-132 166 130 145-92 214 146 160-122 261 96"/><path d="M68 442l188-136 176 78 156-208 178 156 156-126 166 196 152-120 220 112"/><path d="M-40 690l188-108 138 94 196-168 168 124 174-206 186 158 170-90 300 142"/><path d="M180 58l76 248 90-128 86 206 82-338 74 338 92-208 86 156 59-248 97 122 117 24 49 172 111-294 41 176"/><path d="M68 442l80 140 108-276 30 370 146-292 50 124 106-332 62 456 116-300 58 94 98-220 88 378 98-182 92 92 49-212 111 354"/></g>
+   <g className="network-nodes">{[[180,58],[346,178],[514,46],[680,176],[825,84],[1039,230],[1199,108],[68,442],[256,306],[432,384],[588,176],[766,332],[922,206],[1088,402],[1240,282],[148,582],[286,676],[482,508],[650,632],[824,426],[1010,584],[1180,494],[1291,636]].map(([cx,cy],i)=><circle key={i} cx={cx} cy={cy} r={i%5===0?5:3} style={{'--delay':`${(i%9)*-.45}s`}}/>)}</g>
+   <g className="network-travelers"><circle r="4"><animateMotion dur="7s" repeatCount="indefinite" path="M68 442L256 306L432 384L588 176L766 332L922 206"/></circle><circle r="3"><animateMotion dur="9s" begin="-3s" repeatCount="indefinite" path="M148 582L286 676L482 508L650 632L824 426L1010 584L1180 494"/></circle><circle r="3"><animateMotion dur="8s" begin="-5s" repeatCount="indefinite" path="M180 58L346 178L514 46L680 176L825 84L1039 230L1199 108"/></circle></g>
+  </svg>
+  <div className="network-cursor"><span/><span/><span/><i/></div>
+  <div className="network-scan"/>
+  <div className="network-glow ng-one"/><div className="network-glow ng-two"/>
+ </div>
+}
 
 function HashScrollFix(){useEffect(()=>{if(!window.location.hash)return;const targetId=decodeURIComponent(window.location.hash.slice(1)),timer=window.setTimeout(()=>document.getElementById(targetId)?.scrollIntoView({block:'start'}),120);return()=>window.clearTimeout(timer)},[]);return null}
 
